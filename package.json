@@ -1,0 +1,45 @@
+{
+  "name": "is-glob",
+  "description": "Returns `true` if the given string looks like a glob pattern.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/is-glob",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonschlinkert/is-glob.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/is-glob/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/jonschlinkert/is-glob/blob/master/LICENSE-MIT"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "keywords": [
+    "exec",
+    "expression",
+    "glob",
+    "match",
+    "matches",
+    "pattern",
+    "re",
+    "regex",
+    "regular",
+    "string",
+    "test"
+  ]
+}
