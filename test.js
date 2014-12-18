@@ -16,6 +16,7 @@ describe('isGlob', function () {
     isGlob('**/abc.js').should.be.true;
     isGlob('abc/*.js').should.be.true;
     isGlob('abc/(aaa|bbb).js').should.be.true;
+    isGlob('abc/{a,b}.js').should.be.true;
   });
 
   it('should return `false` if it is not a string:', function () {
