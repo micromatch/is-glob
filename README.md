@@ -21,6 +21,8 @@ isGlob('abc/*.js');
 //=> 'true'
 isGlob('abc/(aaa|bbb).js');
 //=> 'true'
+isGlob('abc/{a,b}.js');
+//=> 'true'
 isGlob('abc.js');
 //=> 'false'
 isGlob('abc/def/ghi.js');
