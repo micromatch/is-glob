@@ -34,7 +34,7 @@ isGlob('abc/def/ghi.js');
 Install dev dependencies:
 
 ```bash
-node i -d && mocha
+npm i -d && mocha
 ```
 
 ## Contributing
