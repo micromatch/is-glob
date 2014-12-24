@@ -1,7 +1,7 @@
 {
   "name": "is-glob",
   "description": "Returns `true` if the given string looks like a glob pattern.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/jonschlinkert/is-glob",
   "author": {
     "name": "Jon Schlinkert",
