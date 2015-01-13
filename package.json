@@ -1,7 +1,7 @@
 {
   "name": "is-glob",
   "description": "Returns `true` if the given string looks like a glob pattern.",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/is-glob",
   "author": {
     "name": "Jon Schlinkert",
@@ -16,7 +16,7 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/jonschlinkert/is-glob/blob/master/LICENSE-MIT"
+    "url": "https://github.com/jonschlinkert/is-glob/blob/master/LICENSE"
   },
   "main": "index.js",
   "engines": {
