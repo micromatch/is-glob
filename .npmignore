@@ -12,6 +12,4 @@ vendor
 
 # npmignore
 test.js
-.jshintrc
-.gitattributes
-.verb.md
+.*
