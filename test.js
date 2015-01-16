@@ -1,7 +1,7 @@
 /*!
  * is-glob <https://github.com/jonschlinkert/is-glob>
  *
- * Copyright (c) 2014-2015 Jon Schlinkert.
+ * Copyright (c) 2014-2015, Jon Schlinkert.
  * Licensed under the MIT License
  */
 
@@ -13,6 +13,8 @@ var isGlob = require('./');
 describe('isGlob', function () {
   it('should return `true` if it is a glob pattern:', function () {
     isGlob('*.js').should.be.true;
+    isGlob('!*.js').should.be.true;
+    isGlob('!foo.js').should.be.true;
     isGlob('**/abc.js').should.be.true;
     isGlob('abc/*.js').should.be.true;
   });
