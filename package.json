@@ -1,7 +1,7 @@
 {
   "name": "is-glob",
   "description": "Returns `true` if the given string looks like a glob pattern.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/jonschlinkert/is-glob",
   "author": {
     "name": "Jon Schlinkert",
@@ -30,13 +30,16 @@
     "should": "*"
   },
   "keywords": [
+    "bash",
+    "braces",
+    "check",
     "exec",
     "expression",
     "glob",
+    "globstar",
     "match",
     "matches",
     "pattern",
-    "re",
     "regex",
     "regular",
     "string",
