@@ -2,12 +2,12 @@
  * is-glob <https://github.com/jonschlinkert/is-glob>
  *
  * Copyright (c) 2014-2015, Jon Schlinkert.
- * Licensed under the MIT License
+ * Licensed under the MIT License.
  */
 
 'use strict';
 
-var should = require('should');
+require('should');
 var isGlob = require('./');
 
 describe('isGlob', function () {
@@ -29,8 +29,8 @@ describe('isGlob', function () {
     isGlob('abc/(aaa|bbb).js').should.be.true;
     isGlob('abc/?.js').should.be.true;
     isGlob('?.js').should.be.true;
-    isGlob('[foo].js').should.be.true;
-    isGlob('[!foo].js').should.be.true;
+    isGlob('[abc].js').should.be.true;
+    isGlob('[^abc].js').should.be.true;
     isGlob('a/b/c/[a-z].js').should.be.true;
   });
 
