@@ -14,6 +14,7 @@ describe('isGlob', function () {
   it('should return `true` if it is a glob pattern:', function () {
     isGlob('*.js').should.be.true;
     isGlob('!*.js').should.be.true;
+    isGlob('!foo').should.be.true;
     isGlob('!foo.js').should.be.true;
     isGlob('**/abc.js').should.be.true;
     isGlob('abc/*.js').should.be.true;
@@ -32,6 +33,7 @@ describe('isGlob', function () {
     isGlob('[abc].js').should.be.true;
     isGlob('[^abc].js').should.be.true;
     isGlob('a/b/c/[a-z].js').should.be.true;
+    isGlob('[a-j]*[^c]b/c').should.be.true;
   });
 
   it('should return `false` if it is not a string:', function () {
