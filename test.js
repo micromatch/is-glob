@@ -26,6 +26,22 @@ describe('isGlob', function () {
     isGlob('abc/{a..z..2}.js').should.be.true;
   });
 
+  it('should return `true` if it has an extglob:', function () {
+    isGlob('abc/@(a).js').should.be.true;
+    isGlob('abc/!(a).js').should.be.true;
+    isGlob('abc/+(a).js').should.be.true;
+    isGlob('abc/*(a).js').should.be.true;
+    isGlob('abc/?(a).js').should.be.true;
+  });
+
+  it('should return `true` if it has extglob characters:', function () {
+    isGlob('abc/@.js').should.be.true;
+    isGlob('abc/!.js').should.be.true;
+    isGlob('abc/+.js').should.be.true;
+    isGlob('abc/*.js').should.be.true;
+    isGlob('abc/?.js').should.be.true;
+  });
+
   it('should return `true` if the path has regex characters:', function () {
     isGlob('abc/(aaa|bbb).js').should.be.true;
     isGlob('abc/?.js').should.be.true;
