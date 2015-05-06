@@ -7,5 +7,5 @@
 
 module.exports = function isGlob(str) {
   return typeof str === 'string'
-    && /[!*{}?(|)[\]]/.test(str);
+    && /[@!*+{}?(|)[\]]/.test(str);
 };
