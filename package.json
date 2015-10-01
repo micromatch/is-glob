@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "should": "*"
+    "should": "^7.1.0"
   },
   "keywords": [
     "bash",
@@ -43,5 +43,8 @@
     "regular",
     "string",
     "test"
-  ]
+  ],
+  "dependencies": {
+    "is-extglob": "^1.0.0"
+  }
 }
