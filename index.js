@@ -5,7 +5,7 @@
  * Licensed under the MIT License.
  */
 
- var isExtglob = require('is-extglob');
+var isExtglob = require('is-extglob');
 
 module.exports = function isGlob(str) {
   return typeof str === 'string'

@@ -7,67 +7,75 @@
 
 'use strict';
 
-/* deps: mocha */
-require('should');
+require('mocha');
+var assert = require('assert');
 var isGlob = require('./');
 
 describe('isGlob', function () {
-  it('should return `true` if it is a glob pattern:', function () {
-    isGlob('*.js').should.be.true();
-    isGlob('!*.js').should.be.true();
-    isGlob('!foo').should.be.true();
-    isGlob('!foo.js').should.be.true();
-    isGlob('**/abc.js').should.be.true();
-    isGlob('abc/*.js').should.be.true();
+  describe('glob patterns', function () {
+    it('should return `true` if it is a glob pattern:', function () {
+      assert(isGlob('*.js'));
+      assert(isGlob('!*.js'));
+      assert(isGlob('!foo'));
+      assert(isGlob('!foo.js'));
+      assert(isGlob('**/abc.js'));
+      assert(isGlob('abc/*.js'));
+    });
+
+    it('should return `false` if it is not a string:', function () {
+      assert(!isGlob());
+      assert(!isGlob(null));
+      assert(!isGlob(['**/*.js']));
+      assert(!isGlob(['foo.js']));
+    });
+
+    it('should return `false` if it is not a glob pattern:', function () {
+      assert(!isGlob('.'));
+      assert(!isGlob('aa'));
+      assert(!isGlob('abc.js'));
+      assert(!isGlob('abc/def/ghi.js'));
+    });
   });
 
-  it('should return `true` if the path has brace characters:', function () {
-    isGlob('abc/{a,b}.js').should.be.true();
-    isGlob('abc/{a..z}.js').should.be.true();
-    isGlob('abc/{a..z..2}.js').should.be.true();
+  describe('brace patterns', function () {
+    it('should return `true` if the path has brace characters:', function () {
+      assert(isGlob('abc/{a,b}.js'));
+      assert(isGlob('abc/{a..z}.js'));
+      assert(isGlob('abc/{a..z..2}.js'));
+    });
   });
 
-  it('should return `true` if it has an extglob:', function () {
-    isGlob('abc/@(a).js').should.be.true();
-    isGlob('abc/!(a).js').should.be.true();
-    isGlob('abc/+(a).js').should.be.true();
-    isGlob('abc/*(a).js').should.be.true();
-    isGlob('abc/?(a).js').should.be.true();
+  describe('regex patterns', function () {
+    it('should return `true` if the path has regex characters:', function () {
+      assert(isGlob('abc/(aaa|bbb).js'));
+      assert(isGlob('abc/?.js'));
+      assert(isGlob('?.js'));
+      assert(isGlob('[abc].js'));
+      assert(isGlob('[^abc].js'));
+      assert(isGlob('a/b/c/[a-z].js'));
+      assert(isGlob('[a-j]*[^c]b/c'));
+    });
   });
 
-  it('should return `true` if it has extglob characters and is not valid path:', function () {
-    isGlob('abc/!.js').should.be.true();
-    isGlob('abc/*.js').should.be.true();
-    isGlob('abc/?.js').should.be.true();
-  });
+  describe('extglob patterns', function () {
+    it('should return `true` if it has an extglob:', function () {
+      assert(isGlob('abc/@(a).js'));
+      assert(isGlob('abc/!(a).js'));
+      assert(isGlob('abc/+(a).js'));
+      assert(isGlob('abc/*(a).js'));
+      assert(isGlob('abc/?(a).js'));
+    });
 
-  it('should return `false` if it has extglob characters but is a valid path:', function () {
-    isGlob('abc/@.js').should.be.false();
-    isGlob('abc/+.js').should.be.false();
-  });
+    it('should return `true` if it has extglob characters and is not valid path:', function () {
+      assert(isGlob('abc/!.js'));
+      assert(isGlob('abc/*.js'));
+      assert(isGlob('abc/?.js'));
+    });
 
-  it('should return `true` if the path has regex characters:', function () {
-    isGlob('abc/(aaa|bbb).js').should.be.true();
-    isGlob('abc/?.js').should.be.true();
-    isGlob('?.js').should.be.true();
-    isGlob('[abc].js').should.be.true();
-    isGlob('[^abc].js').should.be.true();
-    isGlob('a/b/c/[a-z].js').should.be.true();
-    isGlob('[a-j]*[^c]b/c').should.be.true();
-  });
-
-  it('should return `false` if it is not a string:', function () {
-    isGlob().should.be.false();
-    isGlob(null).should.be.false();
-    isGlob(['**/*.js']).should.be.false();
-    isGlob(['foo.js']).should.be.false();
-  });
-
-  it('should return `false` if it is not a glob pattern:', function () {
-    isGlob('.').should.be.false();
-    isGlob('aa').should.be.false();
-    isGlob('abc.js').should.be.false();
-    isGlob('abc/def/ghi.js').should.be.false();
+    it('should return `false` if it has extglob characters but is a valid path:', function () {
+      assert(!isGlob('abc/@.js'));
+      assert(!isGlob('abc/+.js'));
+    });
   });
 });
 
