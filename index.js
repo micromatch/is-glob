@@ -5,10 +5,6 @@
  * Licensed under the MIT License.
  */
 
-var isExtglob = require('is-extglob');
-
 module.exports = function isGlob(str) {
-  return typeof str === 'string'
-    && (/[*!?{}(|)[\]]/.test(str)
-     || isExtglob(str));
+  return typeof str === 'string' && /([*!?{}(|)[\]]|[@?!+*]\()/.test(str);
 };
