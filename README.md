@@ -3,13 +3,14 @@
 > Returns `true` if the given string looks like a glob pattern or an extglob pattern. This makes it easy to create code that only uses external modules like node-glob when necessary, resulting in much faster code execution and initialization time, and a better user experience.
 
 ## Install
+
 Install with [npm](https://www.npmjs.com/):
 
 ```sh
 $ npm install --save is-glob
 ```
 
-You might also be interested in [is-valid-glob][] and [has-glob][].
+You might also be interested in [is-valid-glob](https://github.com/jonschlinkert/is-valid-glob) and [has-glob](https://github.com/jonschlinkert/has-glob).
 
 ## Usage
 
@@ -46,6 +47,25 @@ isGlob('abc/?(a).js');
 
 **False**
 
+Escaped globs or extglobs return `false`:
+
+```js
+isGlob('abc/\\@(a).js');
+isGlob('abc/\\!(a).js');
+isGlob('abc/\\+(a).js');
+isGlob('abc/\\*(a).js');
+isGlob('abc/\\?(a).js');
+isGlob('\\!foo.js');
+isGlob('\\*.js');
+isGlob('\\*\\*/abc.js');
+isGlob('abc/\\*.js');
+isGlob('abc/\\(aaa|bbb).js');
+isGlob('abc/\\[a-z].js');
+isGlob('abc/\\{a,b}.js');
+isGlob('abc/\\?.js');
+//=> false
+```
+
 Patterns that do not have glob patterns return `false`:
 
 ```js
@@ -59,7 +79,7 @@ isGlob(null);
 //=> false
 ```
 
-Arrays are also `false` (If you want to check if an array has a glob pattern, use [has-glob][]):
+Arrays are also `false` (If you want to check if an array has a glob pattern, use [has-glob](https://github.com/jonschlinkert/has-glob)):
 
 ```js
 isGlob(['**/*.js']);
@@ -68,19 +88,23 @@ isGlob(['foo.js']);
 ```
 
 ## About
+
 ### Related projects
-- [assemble](https://www.npmjs.com/package/assemble): Get the rocks out of your socks! Assemble makes you fast at creating web projects… [more](https://github.com/assemble/assemble) | [homepage](https://github.com/assemble/assemble "Get the rocks out of your socks! Assemble makes you fast at creating web projects. Assemble is used by thousands of projects for rapid prototyping, creating themes, scaffolds, boilerplates, e-books, UI components, API documentation, blogs, building websit")
-- [base](https://www.npmjs.com/package/base): base is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting… [more](https://github.com/node-base/base) | [homepage](https://github.com/node-base/base "base is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting with a handful of common methods, like `set`, `get`, `del` and `use`.")
-- [update](https://www.npmjs.com/package/update): Be scalable! Update is a new, open source developer framework and CLI for automating updates… [more](https://github.com/update/update) | [homepage](https://github.com/update/update "Be scalable! Update is a new, open source developer framework and CLI for automating updates of any kind in code projects.")
-- [verb](https://www.npmjs.com/package/verb): Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used… [more](https://github.com/verbose/verb) | [homepage](https://github.com/verbose/verb "Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used on hundreds of projects of all sizes to generate everything from API docs to readmes.")
+
+* [assemble](https://www.npmjs.com/package/assemble): Get the rocks out of your socks! Assemble makes you fast at creating web projects… [more](https://github.com/assemble/assemble) | [homepage](https://github.com/assemble/assemble "Get the rocks out of your socks! Assemble makes you fast at creating web projects. Assemble is used by thousands of projects for rapid prototyping, creating themes, scaffolds, boilerplates, e-books, UI components, API documentation, blogs, building websit")
+* [base](https://www.npmjs.com/package/base): base is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting… [more](https://github.com/node-base/base) | [homepage](https://github.com/node-base/base "base is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting with a handful of common methods, like `set`, `get`, `del` and `use`.")
+* [update](https://www.npmjs.com/package/update): Be scalable! Update is a new, open source developer framework and CLI for automating updates… [more](https://github.com/update/update) | [homepage](https://github.com/update/update "Be scalable! Update is a new, open source developer framework and CLI for automating updates of any kind in code projects.")
+* [verb](https://www.npmjs.com/package/verb): Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used… [more](https://github.com/verbose/verb) | [homepage](https://github.com/verbose/verb "Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used on hundreds of projects of all sizes to generate everything from API docs to readmes.")
 
 ### Contributing
+
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
 
 ### Building docs
-_(This document was generated by [verb-generate-readme][] (a [verb][] generator), please don't edit the readme directly. Any changes to the readme must be made in [.verb.md](.verb.md).)_
 
-To generate the readme and API documentation with [verb][]:
+_(This document was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme) (a [verb](https://github.com/verbose/verb) generator), please don't edit the readme directly. Any changes to the readme must be made in [.verb.md](.verb.md).)_
+
+To generate the readme and API documentation with [verb](https://github.com/verbose/verb):
 
 ```sh
 $ npm install -g verb verb-generate-readme && verb
@@ -95,30 +119,17 @@ $ npm install -d && npm test
 ```
 
 ### Author
+
 **Jon Schlinkert**
 
-+ [github/jonschlinkert](https://github.com/jonschlinkert)
-+ [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
+* [github/jonschlinkert](https://github.com/jonschlinkert)
+* [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
 
 ### License
+
 Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert).
 Released under the [MIT license](https://github.com/jonschlinkert/is-glob/blob/master/LICENSE).
 
 ***
 
 _This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.1.30, on September 03, 2016._
-
-[assemble]: https://github.com/assemble/assemble
-[bach]: https://github.com/gulpjs/bach
-[base]: https://github.com/node-base/base
-[composer]: https://github.com/doowb/composer
-[gulp]: http://gulpjs.com
-[has-glob]: https://github.com/jonschlinkert/has-glob
-[is-valid-glob]: https://github.com/jonschlinkert/is-valid-glob
-[micromatch]: https://github.com/jonschlinkert/micromatch
-[npm]: https://docs.npmjs.com/
-[scaffold]: https://github.com/jonschlinkert/scaffold
-[verb]: https://github.com/verbose/verb
-[vinyl]: http://github.com/gulpjs/vinyl
-
-[verb-generate-readme]: https://github.com/verbose/verb-generate-readme
