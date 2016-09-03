@@ -52,11 +52,54 @@ describe('isGlob', function() {
     });
   });
 
+  describe('regex capture groups', function() {
+    it('should return `true` if the path has a capture group (parens):', function() {
+      assert(isGlob('abc/(a|b).js'));
+      assert(isGlob('abc/(a|b|c).js'));
+    });
+
+    it('should return `false` if the group is not balanced:', function() {
+      assert(!isGlob('abc/(a|b.js'));
+      assert(!isGlob('abc/(a|b|c.js'));
+    });
+
+    it('should return `false` if the group is escaped:', function() {
+      assert(!isGlob('abc/\\(a|b).js'));
+      assert(!isGlob('abc/\\(a|b|c).js'));
+    });
+  });
+
+  describe('regex character classes', function() {
+    it('should return `true` if the path has a regex character class:', function() {
+      assert(isGlob('abc/[abc].js'));
+      assert(isGlob('abc/[^abc].js'));
+      assert(isGlob('abc/[1-3].js'));
+    });
+
+    it('should return `false` if the character class is not balanced:', function() {
+      assert(!isGlob('abc/[abc.js'));
+      assert(!isGlob('abc/[^abc.js'));
+      assert(!isGlob('abc/[1-3.js'));
+    });
+
+    it('should return `false` if the character class is escaped:', function() {
+      assert(!isGlob('abc/\\[abc].js'));
+      assert(!isGlob('abc/\\[^abc].js'));
+      assert(!isGlob('abc/\\[1-3].js'));
+    });
+  });
+
   describe('brace patterns', function() {
     it('should return `true` if the path has brace characters:', function() {
       assert(isGlob('abc/{a,b}.js'));
       assert(isGlob('abc/{a..z}.js'));
       assert(isGlob('abc/{a..z..2}.js'));
+    });
+
+    it('should return `false` if (basic) braces are not balanced:', function() {
+      assert(!isGlob('abc/\\{a,b}.js'));
+      assert(!isGlob('abc/\\{a..z}.js'));
+      assert(!isGlob('abc/\\{a..z..2}.js'));
     });
   });
 
