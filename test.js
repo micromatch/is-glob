@@ -41,6 +41,9 @@ describe('isGlob', function() {
 
     it('should return `false` if it is not a glob pattern:', function() {
       assert(!isGlob(''));
+      assert(!isGlob('~/abc'));
+      assert(!isGlob('~/abc'));
+      assert(!isGlob('~/(abc)'));
       assert(!isGlob('+~(abc)'));
       assert(!isGlob('.'));
       assert(!isGlob('@.(abc)'));
@@ -56,6 +59,10 @@ describe('isGlob', function() {
     it('should return `true` if the path has a capture group (parens):', function() {
       assert(isGlob('abc/(a|b).js'));
       assert(isGlob('abc/(a|b|c).js'));
+
+      assert(!isGlob('abc/(abc).js'), 'not a capture group');
+      assert(!isGlob('abc/(foo bar).js'), 'not a capture group');
+      assert(isGlob('abc/(foo bar)/*.js'), 'not a capture group');
     });
 
     it('should return `false` if the group is not balanced:', function() {
@@ -105,6 +112,8 @@ describe('isGlob', function() {
 
   describe('regex patterns', function() {
     it('should return `true` if the path has regex characters:', function() {
+      assert(!isGlob('$(abc)'));
+      assert(!isGlob('&(abc)'));
       assert(isGlob('!&(abc)'));
       assert(isGlob('!*.js'));
       assert(isGlob('!foo'));
@@ -146,6 +155,26 @@ describe('isGlob', function() {
       assert(isGlob('abc/+(a).js'));
       assert(isGlob('abc/*(a).js'));
       assert(isGlob('abc/?(a).js'));
+      assert(isGlob('abc/@(a|b).js'));
+      assert(isGlob('abc/!(a|b).js'));
+      assert(isGlob('abc/+(a|b).js'));
+      assert(isGlob('abc/*(a|b).js'));
+      assert(isGlob('abc/?(a|b).js'));
+      assert(isGlob('abc/(a|b).js'));
+      assert(isGlob('abc/(a|b).js'));
+      assert(isGlob('abc/(a|b).js'));
+      assert(isGlob('abc/(a|b).js'));
+      assert(isGlob('abc/(a|b).js'));
+      assert(!isGlob('abc/(ab).js'));
+      assert(!isGlob('abc/(ab).js'));
+      assert(!isGlob('abc/(ab).js'));
+      assert(!isGlob('abc/(ab).js'));
+      assert(!isGlob('abc/(ab).js'));
+      assert(isGlob('abc/(ab)*.js'));
+      assert(isGlob('abc/(ab)*.js'));
+      assert(isGlob('abc/(ab)*.js'));
+      assert(isGlob('abc/(ab)*.js'));
+      assert(isGlob('abc/(ab)*.js'));
     });
 
     it('should return `false` if extglob characters are escaped:', function() {
@@ -154,6 +183,20 @@ describe('isGlob', function() {
       assert(!isGlob('abc/\\+(a).js'));
       assert(!isGlob('abc/\\*(a).js'));
       assert(!isGlob('abc/\\?(a).js'));
+      assert(isGlob('abc/\\@(a|b).js'));
+      assert(isGlob('abc/\\!(a|b).js'));
+      assert(isGlob('abc/\\+(a|b).js'));
+      assert(isGlob('abc/\\*(a|b).js'));
+      assert(isGlob('abc/\\?(a|b).js'));
+      assert(isGlob('abc/\\@(a\\|b).js'));
+      assert(isGlob('abc/\\!(a\\|b).js'));
+      assert(isGlob('abc/\\+(a\\|b).js'));
+      assert(isGlob('abc/\\*(a\\|b).js'));
+      assert(isGlob('abc/\\?(a\\|b).js'));
+    });
+
+    it('should not return true for non-extglob parens', function() {
+      assert(!isGlob('C:/Program Files (x86)/'));
     });
 
     it('should return `true` if it has glob characters and is not a valid path:', function() {
