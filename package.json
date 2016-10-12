@@ -14,9 +14,7 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "LICENSE",
-    "README.md"
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
@@ -26,7 +24,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-extglob": "^2.0.0"
+    "is-extglob": "^2.1.0"
   },
   "devDependencies": {
     "gulp-format-md": "^0.1.10",
