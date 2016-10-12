@@ -52,6 +52,9 @@ describe('isGlob', function() {
       assert(!isGlob('abc.js'));
       assert(!isGlob('abc/def/!ghi.js'));
       assert(!isGlob('abc/def/ghi.js'));
+      assert(isGlob('@.(?abc)'));
+      assert(isGlob('@.(?:abc)'));
+      assert(isGlob('@.(?!abc)'));
     });
   });
 
@@ -212,8 +215,8 @@ describe('isGlob', function() {
     });
   });
 
-  describe('isGlob', function () {
-    it('should return true when the string has an extglob:', function () {
+  describe('isGlob', function() {
+    it('should return true when the string has an extglob:', function() {
       assert(isGlob('?(abc)'));
       assert(isGlob('@(abc)'));
       assert(isGlob('!(abc)'));
@@ -231,7 +234,7 @@ describe('isGlob', function() {
       assert(isGlob('+(abc|xyz)'));
     });
 
-    it('should not match escaped extglobs', function () {
+    it('should not match escaped extglobs', function() {
       assert(!isGlob('\\?(abc)'));
       assert(!isGlob('\\@(abc)'));
       assert(!isGlob('\\!(abc)'));
@@ -244,7 +247,7 @@ describe('isGlob', function() {
       assert(!isGlob('xyz/\\+(abc)/xyz'));
     });
 
-    it('should detect when an glob is in the same pattern as an escaped glob', function () {
+    it('should detect when an glob is in the same pattern as an escaped glob', function() {
       assert(isGlob('\\?(abc|xyz)/xyz'));
       assert(isGlob('\\@(abc|xyz)'));
       assert(isGlob('\\!(abc|xyz)'));
