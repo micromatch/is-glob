@@ -24,7 +24,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-extglob": "^2.1.0"
+    "is-extglob": "^2.1.1"
   },
   "devDependencies": {
     "gulp-format-md": "^0.1.10",
