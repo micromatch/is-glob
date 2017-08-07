@@ -5,8 +5,9 @@
   "homepage": "https://github.com/jonschlinkert/is-glob",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
-    "Daniel Perez <daniel@claudetech.com> (http://tuvistavie.com)",
-    "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)"
+    "Brian Woodward (https://twitter.com/doowb)",
+    "Daniel Perez (https://tuvistavie.com)",
+    "Jon Schlinkert (http://twitter.com/jonschlinkert)"
   ],
   "repository": "jonschlinkert/is-glob",
   "bugs": {
