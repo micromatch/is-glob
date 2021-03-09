@@ -19,6 +19,10 @@ describe('isGlob', function() {
       assert(isGlob('!*.js'));
       assert(isGlob('!foo'));
       assert(isGlob('!foo.js'));
+      assert(isGlob('foo?'));
+      assert(isGlob('foo?.js'));
+      assert(isGlob('bar?/foo.js'));
+      assert(isGlob('bar?/foo?.js'));
       assert(isGlob('**/abc.js'));
       assert(isGlob('abc/*.js'));
       assert(isGlob('@.(?:abc)'));
