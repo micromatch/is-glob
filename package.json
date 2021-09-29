@@ -22,7 +22,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha && node benchmark.js"
   },
   "dependencies": {
     "is-extglob": "^2.1.1"
