@@ -7,7 +7,6 @@
 
 'use strict';
 
-require('mocha');
 var assert = require('assert');
 var isGlob = require('./');
 
@@ -302,21 +301,6 @@ describe('isGlob', function() {
       assert(isGlob('\\!(abc|xyz)/!(abc|xyz)'));
       assert(isGlob('\\*(abc|xyz)/*(abc|xyz)'));
       assert(isGlob('\\+(abc|xyz)/+(abc|xyz)'));
-    });
-
-    it('should be performant and not subject to ReDoS/exponential backtracking', function() {
-      if (!String.prototype.repeat) {
-        return;
-      }
-      // These will time out if the algorithm is inefficient.
-      isGlob('('.repeat(1e5));
-      isGlob('('.repeat(1e5), {strict: false});
-      isGlob('['.repeat(1e5));
-      isGlob('['.repeat(1e5), {strict: false});
-      isGlob('{'.repeat(1e5));
-      isGlob('{'.repeat(1e5), {strict: false});
-      isGlob('\\'.repeat(1e5));
-      isGlob('\\'.repeat(1e5), {strict: false});
     });
   });
 });
