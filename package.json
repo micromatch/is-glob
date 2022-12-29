@@ -31,7 +31,10 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^17.3.0",
     "commitlint": "^17.3.0",
+    "enforce-branch-name": "^1.1.2",
     "gulp-format-md": "^0.1.10",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "mocha": "^3.0.2"
   },
   "keywords": [
