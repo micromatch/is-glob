@@ -29,6 +29,8 @@
     "is-extglob": "^2.1.1"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.3.0",
+    "commitlint": "^17.3.0",
     "gulp-format-md": "^0.1.10",
     "mocha": "^3.0.2"
   },
