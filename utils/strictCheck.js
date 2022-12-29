@@ -13,14 +13,17 @@ module.exports = function strictCheck(str) {
   let backSlashIndex = -2
 
   while (index < str.length) {
+    // the string contains the * character
     if (str[index] === '*') {
       return true
     }
 
+    // the string contains the ? character
     if (str[index + 1] === '?' && /[\].+)]/.test(str[index])) {
       return true
     }
 
+    // the string contains the [] characters
     if (
       closeSquareIndex !== -1 &&
       str[index] === '[' &&
@@ -40,6 +43,7 @@ module.exports = function strictCheck(str) {
       }
     }
 
+    // the string contains the {} characters
     if (
       closeCurlyIndex !== -1 &&
       str[index] === '{' &&
