@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo -e "===\n>> Commit Msg Hook:: Checking commit convention"
+
+npx --no -- commitlint --edit "$1"
