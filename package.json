@@ -22,7 +22,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha && node benchmark.js"
+    "test": "mocha && node benchmark.js",
+    "test:watch": "mocha --watch && node benchmark.js"
   },
   "dependencies": {
     "is-extglob": "^2.1.1"
