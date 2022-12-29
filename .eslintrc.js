@@ -5,12 +5,12 @@ module.exports = {
     node: true
   },
   extends: 'standard',
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
   rules: {
+    'space-before-function-paren': 'off'
   }
 }
