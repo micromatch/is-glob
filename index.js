@@ -6,8 +6,7 @@
  */
 const strictCheck = require('./utils/strictCheck')
 const relaxedCheck = require('./utils/relaxedCheck')
-
-const isExtglob = require('is-extglob')
+const isExtglob = require('./utils/isExtGlob')
 
 module.exports = function isGlob(str, options) {
   if (typeof str !== 'string' || str === '') {

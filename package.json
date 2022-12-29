@@ -25,9 +25,6 @@
     "test": "mocha && node benchmark.js",
     "test:watch": "mocha --watch && node benchmark.js"
   },
-  "dependencies": {
-    "is-extglob": "^2.1.1"
-  },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.3.0",
     "commitlint": "^17.3.0",
