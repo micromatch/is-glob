@@ -7,7 +7,6 @@
 
 'use strict';
 
-require('mocha');
 var assert = require('assert');
 var isGlob = require('./');
 
@@ -305,4 +304,3 @@ describe('isGlob', function() {
     });
   });
 });
-
