@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo -e "===\n>> Pre-commit Hook:: Checking branch name"
+
+branchName=$(git branch | grep '*' | sed 's/* //')
+
+if [ $branchName == 'master' ]
+then
+    echo -e "\n🚫 Commit directly to master branch is not allowed!\n" && exit 1
+fi
+
+yarn enforce-branch-name '(hotfix|bugfix|feature)\/.+' --ignore 'master|dev'
+
+yarn lint-staged
