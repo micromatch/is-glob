@@ -24,18 +24,11 @@ module.exports = function strictCheck(str) {
     }
 
     // the string contains the [] characters
-    if (
-      closeSquareIndex !== -1 &&
-      str[index] === '[' &&
-      str[index + 1] !== ']'
-    ) {
-      if (closeSquareIndex < index) {
+    if (str[index] === '[' && str[index + 1] !== ']') {
+      if (closeSquareIndex === -1 || closeSquareIndex < index) {
         closeSquareIndex = str.indexOf(']', index)
       }
       if (closeSquareIndex > index) {
-        if (backSlashIndex === -1 || backSlashIndex > closeSquareIndex) {
-          return true
-        }
         backSlashIndex = str.indexOf('\\', index)
         if (backSlashIndex === -1 || backSlashIndex > closeSquareIndex) {
           return true
@@ -44,13 +37,9 @@ module.exports = function strictCheck(str) {
     }
 
     // the string contains the {} characters
-    if (
-      closeCurlyIndex !== -1 &&
-      str[index] === '{' &&
-      str[index + 1] !== '}'
-    ) {
+    if (str[index] === '{' && str[index + 1] !== '}') {
       closeCurlyIndex = str.indexOf('}', index)
-      if (closeCurlyIndex > index) {
+      if (closeCurlyIndex !== -1 && closeCurlyIndex > index) {
         backSlashIndex = str.indexOf('\\', index)
         if (backSlashIndex === -1 || backSlashIndex > closeCurlyIndex) {
           return true
@@ -59,14 +48,13 @@ module.exports = function strictCheck(str) {
     }
 
     if (
-      closeParenIndex !== -1 &&
       str[index] === '(' &&
       str[index + 1] === '?' &&
       /[:!=]/.test(str[index + 2]) &&
       str[index + 3] !== ')'
     ) {
       closeParenIndex = str.indexOf(')', index)
-      if (closeParenIndex > index) {
+      if (closeParenIndex !== -1 && closeParenIndex > index) {
         backSlashIndex = str.indexOf('\\', index)
         if (backSlashIndex === -1 || backSlashIndex > closeParenIndex) {
           return true
@@ -91,18 +79,20 @@ module.exports = function strictCheck(str) {
 
     if (str[index] === '\\') {
       const open = str[index + 1]
-      index += 2
       const close = chars[open]
-
       if (close) {
-        const n = str.indexOf(close, index)
+        const n = str.indexOf(close, index + 2)
         if (n !== -1) {
           index = n + 1
+          if (str[index] === '!') {
+            return true
+          }
         }
-      }
-
-      if (str[index] === '!') {
-        return true
+      } else {
+        index += 2
+        if (str[index] === '!') {
+          return true
+        }
       }
     } else {
       index++
