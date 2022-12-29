@@ -1,6 +1,6 @@
-const chars = { '{': '}', '(': ')', '[': ']' }
-
 module.exports = function strictCheck(str) {
+  const chars = { '{': '}', '(': ')', '[': ']' }
+
   if (str[0] === '!') {
     return true
   }

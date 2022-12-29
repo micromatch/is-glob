@@ -1,6 +1,6 @@
-const chars = { '{': '}', '(': ')', '[': ']' }
-
 module.exports = function relaxedCheck(str) {
+  const chars = { '{': '}', '(': ')', '[': ']' }
+
   if (str[0] === '!') {
     return true
   }
