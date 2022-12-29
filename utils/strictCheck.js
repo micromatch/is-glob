@@ -74,8 +74,8 @@ module.exports = function strictCheck(str) {
       }
     }
 
-    if (pipeIndex !== -1 && str[index] === '(' && str[index + 1] !== '|') {
-      if (pipeIndex < index) {
+    if (str[index] === '(' && str[index + 1] !== '|') {
+      if (pipeIndex === -1 || pipeIndex < index) {
         pipeIndex = str.indexOf('|', index)
       }
       if (pipeIndex !== -1 && str[pipeIndex + 1] !== ')') {
