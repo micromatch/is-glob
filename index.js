@@ -8,7 +8,7 @@
 const isExtglob = require('is-extglob')
 const chars = { '{': '}', '(': ')', '[': ']' }
 
-const strictCheck = function (str) {
+const strictCheck = str => {
   if (str[0] === '!') {
     return true
   }
@@ -115,7 +115,7 @@ const strictCheck = function (str) {
   return false
 }
 
-const relaxedCheck = function (str) {
+const relaxedCheck = str => {
   if (str[0] === '!') {
     return true
   }
